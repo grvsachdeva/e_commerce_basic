@@ -19,7 +19,7 @@ route.get('/', (req, res) => {
 
 route.post('/', (req, res) => {
     // We expect the req to have name in it
-    // We will create a new user 
+    // We will create a new user
 
     User.create({
         name: req.body.name

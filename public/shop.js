@@ -15,6 +15,15 @@ function addProduct (name, manuf, price, done) {
     })
 }
 
+function addItemToCart(name, price,done){
+  $.post('/api/cart', {
+      name: name,
+      price: price
+  },function(data){
+    done(data);
+  })
+}
+
 function createProductCard (product) {
     return $(`
     <div class="col-4 card mx-2 p-4">
@@ -24,7 +33,7 @@ function createProductCard (product) {
             <div class="col m-3 p-3">
                 <b>Rs. ${product.price}</b>
             </div>
-            <button class="col btn btn-primary m-3">Buy</button> 
+            <button class="col btn btn-primary m-3 buyNow" name="${product.name}" price="${product.price}" onclick="addItemCart('${product.name}',${product.price})">Buy</button>
         </div>
     </div>`
         )
