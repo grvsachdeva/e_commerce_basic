@@ -51,4 +51,29 @@ route.post('/', (req, res) => {
 
 })
 
+route.post('/deleteProduct', (req, res) => {
+
+console.log(req.body.name);
+
+  Cart.destroy({
+   where: {
+     name: req.body.name
+   }
+  }).then(function(result){
+      res.status(201).send(result);
+  })
+       // Cart.find({
+       //   where: {
+       //      name: req.body.name
+       //   }
+       // }).then((result) => {
+       //     return Cart.destroy({
+       //      where: {
+       //        name: req.body.name
+       //     }
+       //   })
+       // });
+
+})
+
 exports = module.exports = route

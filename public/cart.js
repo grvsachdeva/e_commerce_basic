@@ -4,7 +4,7 @@ $(function () {
 
     fetchItems(function (items) {
       let totalPrice = 0;
-        html = `<table  border="1" cellspacing="10" cellpadding="10" >
+        html = `<table cellspacing="10" cellpadding="10" >
           <thead>
             <th>Product Name</th>
             <th>Per unit price</th>
@@ -13,10 +13,10 @@ $(function () {
           </thead>
         `
         for (item of items) {
-            html = html + `<tr><td>${item.name}</td><td>${item.price}</td><td>${item.quantity}</td><td>${item.quantity * item.price}</td></tr>`
+            html = html + `<tr><td><b>${item.name}</b></td><td>${item.price}</td><td>${item.quantity}</td><td>${item.quantity * item.price}</td><td><i style="width:20px; height:20px;" class="fa fa-times-circle red" onclick="removeProduct('${item.name}')"></i></td></tr>`
             totalPrice += item.price * item.quantity;
         }
-        html = html + `</table> <div class="row" id="totalPrice"><h3>Total Amount Payable: &#8377; ${totalPrice}</h3></div><br><br>`
+        html = html + `</table><hr><div class="row" id="totalPrice"><h3 style='text-align:center; margin-left:300px; color:red;'>Grand Total: <span style="color:black;">&#8377  ${totalPrice}</span></h3></div><br><br>`
         html = html + `<button class="col btn btn-success m-3"  onclick="">Proceed to Checkout >> </button>`
 
         itemList.append(html);
@@ -60,20 +60,20 @@ function createCartItem (product) {
         )
 }
 
-
-
-
-
 function fetchItems (done) {
     $.get('/api/cart', function (data) {
         done(data)
     })
 }
-//
-// function decrementProduct(){
-//
-// }
-// 
-// function removeProduct(name){
-//
-// }
+
+function removeProduct(name){
+  console.log("Remove innn",name);
+
+  $.post('api/cart/deleteProduct',{
+    name: name
+    },function (data) {
+    console.log(data);
+  })
+  window.location = "/cart.html"
+
+}

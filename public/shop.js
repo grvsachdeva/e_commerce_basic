@@ -26,7 +26,7 @@ function addItemToCart(name, price,done){
 
 function createProductCard (product) {
     return $(`
-    <div class="col-4 card mx-2 p-4">
+    <div class="col-4 card mx-2 p-4" style="box-shadow:1px;">
         <h4 class="product-name"><b>${product.name}</b></h4>
         <div class="product-manufacturer">${product.manufacturer}</div>
         <div class="row">

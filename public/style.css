@@ -1,0 +1,22 @@
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+tr{
+  height:80px;
+}
+
+td{
+  text-align: center;
+  width:200px;
+}
+
+thead{
+  text-align: center;
+  width:200px;
+
+}
+
+.nav-item .active{
+  background-color:yellow;
+}
