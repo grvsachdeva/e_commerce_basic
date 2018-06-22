@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
 
-const db = new Sequelize('shopdb', 'shopper', 'Shoppass 1', {
+const db = new Sequelize('shopdb2', 'shopper2', 'Shoppass 1', {
     host: 'localhost',
     dialect: 'mysql',
     pool: {
@@ -51,7 +51,7 @@ const Cart = db.define('cart', {
         type: Sequelize.FLOAT,
         allowNull: false,
         defaultValue: 0.0
-    },quantity:{
+    },quantity: {
       type: Sequelize.INTEGER,
       allowNull: false,
       defaultValue: 0
