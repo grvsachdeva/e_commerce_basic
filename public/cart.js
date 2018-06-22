@@ -1,5 +1,6 @@
 $(function () {
 
+
     let itemList = $('#cart-items')
 
     fetchItems(function (items) {
@@ -17,7 +18,7 @@ $(function () {
             totalPrice += item.price * item.quantity;
         }
         html = html + `</table><hr><div class="row" id="totalPrice"><h3 style='text-align:center; margin-left:300px; color:red;'>Grand Total: <span style="color:black;">&#8377  ${totalPrice}</span></h3></div><br><br>`
-        html = html + `<button class="col btn btn-success m-3"  onclick="">Proceed to Checkout >> </button>`
+        html = html + `<button class="col btn btn-success m-3"  onclick="">Proceed to Checkout &nbsp; <i class='far fa-credit-card'></i> </button>`
 
         itemList.append(html);
     })
@@ -29,7 +30,11 @@ function buyNow(name, price){
       name,
       price,
       function (addedItem) {
-          window.alert("Added " + addedItem.name + " to Cart")
+        $('body').prepend(`<div class="alert alert-success alert-dismissible">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+<strong>${addedItem.name}</strong> is successfully added to the cart.
+</div>
+`);
           window.location="/cart.html";
       }
   )
@@ -41,7 +46,12 @@ function addItemCart(name, price){
       name,
       price,
       function (addedItem) {
-          window.alert("Added " + addedItem.name + " to Cart")
+        $('body').prepend(`<div class="alert alert-success alert-dismissible">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+<strong>${addedItem.name}</strong> is successfully added to the cart.
+</div>
+`);
+
       }
   )
 }
